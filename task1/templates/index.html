@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Content Security Policy (CSP) meta tag -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+
+    <title>Sentiment Analysis</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        height: 100%;
+        font-family: Arial;
+        margin: 0;
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      form textarea {
+        width: 500px;
+        height: 150px;
+        border-radius: 3px;
+        border-color: red;
+        padding: 2px 10px;
+        box-sizing: border-box;
+        min-width: 300px;
+        margin-top: 4px;
+        font-size: 16px;
+      }
+
+      form button {
+        width: 90px;
+        height: 38px;
+        margin-top: 51px;
+        border-color: coral;
+        background-color: antiquewhite;
+      }
+
+      form button:hover {
+        width: 90px;
+        height: 38px;
+        margin-top: 51px;
+        border-color: coral;
+        background-color: #e2661d;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+          0 17px 50px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .container {
+        height: 100%;
+      }
+
+
+      .header {
+        height: 124px;
+        margin-top: 0;
+        padding: 36px;
+        text-align: center;
+        background: #197278;
+        color: white;
+        font-size: 25px;
+      }
+      /* Page Content */
+      .content {
+        padding: 20px;
+        background: #edddd4;
+        height: calc(100% - 402px);
+      }
+
+      .footer {
+      background-color: black; /* Change this to black or any other color you prefer */
+      height: 165px;
+      position: fixed;
+      width: 100%;
+      bottom: 0px;
+      text-align: center;
+    }
+
+
+      .predict {
+        margin-top: 42px;
+        font-size: 25px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Sentiment Analysis of Reviews</h1>
+      </div>
+      <div class="content">
+        <form action="{{ url_for('predict')}}" method="post">
+          <textarea
+            name="Review"
+            placeholder="Enter the restaurant review here..."
+            required="required"
+            cols="500"
+            rows="100"
+          >{{ review_text }}</textarea>
+
+          <button type="submit">
+            Predict
+          </button>
+        </form>
+        <div class="predict">
+          {{ prediction_text }}
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </body>
+</html>
